@@ -1,0 +1,3 @@
+pandas
+yagmail
+python-dotenv
