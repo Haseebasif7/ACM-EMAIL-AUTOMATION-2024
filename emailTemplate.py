@@ -3,8 +3,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import openpyxl
 
-gmail_user = 'k224819@nu.edu.pk'
-gmail_password = 'ebkh slnd rqrx kzbq'
+gmail_user = ''
+gmail_password = ''
 
 workbook = openpyxl.load_workbook('C:/Users/CoreCom/Downloads/IDs.xlsx')
 sheet = workbook.active
