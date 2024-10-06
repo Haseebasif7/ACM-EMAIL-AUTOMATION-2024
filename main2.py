@@ -16,6 +16,16 @@ sender_password = os.getenv("PASS")  # Preferred to use app password
 
 yag = yagmail.SMTP(sender_email, sender_password)
 
+options = {
+    'page-size': 'Letter',
+    'margin-top': '0.75in',
+    'margin-right': '0.75in',
+    'margin-bottom': '0.75in',
+    'margin-left': '0.75in',
+    'encoding': "UTF-8",
+    'no-outline': None
+}
+
 def convert_html_to_pdf(html_content, name):
     output_filename = f"{name}_welcome_letter.pdf"  
     try:
@@ -23,7 +33,16 @@ def convert_html_to_pdf(html_content, name):
             html_content,
             output_filename,
             configuration=pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'),
-            options={'enable-local-file-access': ''}  # Allow local file access
+            options={
+            'enable-local-file-access': '',  # Allow local file access
+            'page-size': 'Letter',
+            'margin-top': '0in',
+            'margin-right': '0in',
+            'margin-bottom': '0in',
+            'margin-left': '0in',
+            'encoding': 'UTF-8',
+            'no-outline': None
+    }
         )
         print(f"Successfully created PDF: {output_filename}")
     except Exception as e:
