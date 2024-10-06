@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+def getLetterWithAttributes(fullName,position,teamName):
+  return f"""
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,22 +8,22 @@
   <title>Email Automation</title>
 </head>
 <style>
-  *{
+  *{{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  .container{
+  }}
+  .container{{
     position: relative;
     height: auto;
 
-  }
-  .container img{
+  }}
+  .container img{{
     width: 100%;
     z-index: 1;
     /* object-fit: cover; */
-  }
-  p{
+  }}
+  p{{
     width: 78%;
     position: absolute;
     top: 30%;
@@ -30,30 +32,30 @@
     background-color: #ffffff80;
     box-shadow: 6px 6px 5px rgba(148, 138, 138, 0.9);
     font-family: Calibri, sans-serif;
-  }
-  @media screen and (max-width:600px) {
-    p{
+  }}
+  @media screen and (max-width:600px) {{
+    p{{
       width: 80%;
       font-size: 2vw;
       white-space: wrap;
       box-shadow: 6px 6px 5px rgba(160, 155, 155, 0.9);
-    }
-    .container{
+    }}
+    .container{{
       white-space: wrap;
-    }
-  }
-  @media screen and (min-width:600px) {
-    p{
+    }}
+  }}
+  @media screen and (min-width:600px) {{
+    p{{
       width: 80%;
       font-size: 2vw;
       white-space: wrap;
-    }
-  }
+    }}
+  }}
 
 </style>
 <body>
   <div class="container">
-    <img src="/images/Extended Member Inductions - Letter template-1.png" alt="">
+    <img src="C:/Users/Asif/Desktop/acm/ACM-EMAIL-AUTOMATION-2024/images/pic.png" alt="">
     <!-- <div class="text-container"> -->
       <p>
         Dear {fullName}, <br><br>
@@ -72,3 +74,4 @@
   </div>
 </body>
 </html>
+  """
