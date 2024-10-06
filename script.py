@@ -150,7 +150,6 @@ def process_csv_and_send_emails(csv_file):
                 <div class="email-body">
                     <h2>Hello, {name}!</h2>
                     <p>Welcome to the ACM community. We are excited to have you!</p>
-                    {html_content}  <!-- Insert the generated HTML content here -->
                 </div>
                 <div class="email-footer">
                     <p>Regards,<br>ACM Team</p>
