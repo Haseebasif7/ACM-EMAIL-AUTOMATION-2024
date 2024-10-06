@@ -94,75 +94,87 @@ def process_csv_and_send_emails(csv_file):
         # Generate HTML content using the provided function
         html_content = getLetterWithAttributes(name, role, department)
 
-        # Create PDF from HTML
-        pdf_file_path = convert_html_to_pdf(html_content, name)
-
-        # Image path for inline display
-        image_url = 'C:/Users/Asif/Desktop/acm2/ACM-EMAIL-AUTOMATION-2024/acmLogo.jpeg'
-
-        # Construct the final HTML email with the header and body
+        # Construct the final HTML email with the header and body (with logo)
         final_html = f"""
         <!DOCTYPE html>
         <html>
         <head>
-            <style>
-                body {{
-                    font-family: Arial, sans-serif;
-                    margin: 0;
-                    padding: 0;
-                    background-color: #f4f4f4;
-                }}
-                .email-container {{
-                    width: 100%;
-                    max-width: 600px;
-                    margin: 0 auto;
-                    background-color: #ffffff;
-                    padding: 20px;
-                    border: 2px solid #0D5F91;
-                    border-radius: 5px;
-                }}
-                .email-header {{
-                    text-align: center;
-                    color: #000;
-                }}
-                .email-body {{
-                    padding: 20px;
-                }}
-                .email-footer {{
-                    text-align: center;
-                    font-size: 12px;
-                    color: #999;
-                    padding: 20px 0;
-                    border-top: 1px solid #e0e0e0;
-                }}
-                img {{
-                    width: 80px;
-                    height: auto;
-                }}
-            </style>
+        <style>
+            body {{
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }}
+            .email-container {{
+                width: 80%;
+                max-width: 500px;
+                margin: 0 auto;
+                background-color: #ffffff;
+                padding: 20px;
+                border: 5px solid rgb(13, 95, 145);
+                border-radius: 5px;
+            }}
+            .email-header {{
+                padding: 10px;
+                text-align: center;
+                color: rgb(0, 0, 0);
+            }}
+            .email-body {{
+                padding: 20px;
+            }}
+            .email-body h2 {{
+                color: black;
+            }}
+            .email-footer {{
+                text-align: center;
+                font-size: 12px;
+                color: #999;
+                padding: 20px 0;
+                border-top: 1px solid #e0e0e0;
+            }}
+            .email-footer a {{
+                text-decoration: none;
+            }}
+        </style> 
         </head>
+
         <body>
             <div class="email-container">
                 <div class="email-header">
-                    <img src="cid:acmLogo" alt="ACM Logo">
+                    <img src="cid:acmLogo" style="width: 50%; border-radius:10px;" alt="ACM Logo">
                     <h1>Welcome to ACM</h1>
                 </div>
+
+                <!-- Body -->
                 <div class="email-body">
-                    <h2>Hello, {name}!</h2>
+                    <h2>Hello!</h2>
                     <p>Welcome to the ACM community. We are excited to have you!</p>
                 </div>
+
+                <!-- Footer -->
                 <div class="email-footer">
                     <p>Regards,<br>ACM Team</p>
                 </div>
             </div>
         </body>
-        </html>
+</html>
         """
+
+        # Create a PDF version of the HTML content without the logo
+        pdf_html_content = html_content.replace(
+            '<img src="cid:acmLogo" style="width: 50%; border-radius:10px;" alt="ACM Logo">',
+            ''
+        )
+
+        # Create PDF from HTML
+        pdf_file_path = convert_html_to_pdf(pdf_html_content, name)
+
+        # Image path for inline display
+        image_url = 'C:/Users/Asif/Desktop/acm2/ACM-EMAIL-AUTOMATION-2024/acmLogo.jpeg'
 
         try:
             send_email(recipient_email, f"Welcome to the {department} Team, {name}!", final_html, pdf_file_path, image_url)
             print(f"Email sent to {name} at {recipient_email}.")
         except Exception as e:
             print(f"Failed to send email to {name}. Error: {e}")
-
 
