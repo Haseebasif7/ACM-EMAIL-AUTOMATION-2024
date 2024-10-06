@@ -11,5 +11,5 @@
 	- To have csv files of sent and unsent recipients generated automatically.
 	
 - Letter Generation
-	- Letter Design in Html // Initial Design done, changes to be made once official design recieved.
-	- Html to Pdf conversion (pdfkit)
+	- Letter Design in Html // DONE
+	- Html to Pdf conversion (pdfkit) // DONE
