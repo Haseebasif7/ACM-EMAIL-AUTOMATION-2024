@@ -6,7 +6,7 @@ import openpyxl
 gmail_user = ''
 gmail_password = ''
 
-workbook = openpyxl.load_workbook('C:/Users/CoreCom/Downloads/IDs.xlsx')
+workbook = openpyxl.load_workbook('')
 sheet = workbook.active
 
 image_url = 'https://drive.google.com/uc?export=view&id=1XRpg-Sc-2YJLAaseX3J2yTD-2Vf5GAaA'
@@ -30,7 +30,6 @@ for i in range(2, sheet.max_row + 1):
                 font-family: Arial, sans-serif;
                 margin: 0;
                 padding: 0;
-                background-color: #f4f4f4;
             }}
             .email-container {{
             width: 80%;
@@ -50,7 +49,7 @@ for i in range(2, sheet.max_row + 1):
                 padding: 20px;
             }}
             .email-body h2 {{
-                color: #333;
+                color: black;
             }}
             .email-footer {{
                 text-align: center;
@@ -69,7 +68,7 @@ for i in range(2, sheet.max_row + 1):
         <body>
             <div class="email-container">
                 <div class="email-header">
-                    <img src="{image_url}" style="width: 10vw;" alt="ACM Logo">
+                    <img src="{image_url}" style="width: 50%;" alt="ACM Logo">
                     <h1>Welcome to ACM</h1>
                 </div>
 
