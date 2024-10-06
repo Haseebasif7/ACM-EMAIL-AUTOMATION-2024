@@ -1,3 +1,4 @@
+
 def getLetterWithAttributes(fullName,position,teamName):
   return f"""
     <!DOCTYPE html>
@@ -55,7 +56,7 @@ def getLetterWithAttributes(fullName,position,teamName):
 </style>
 <body>
   <div class="container">
-    <img src="C:/Users/Asif/Desktop/acm/ACM-EMAIL-AUTOMATION-2024/images/pic.png" alt="">
+   <img src="C:/Users/Asif/Desktop/acm/pic.png" alt="">
     <!-- <div class="text-container"> -->
       <p>
         Dear {fullName}, <br><br>
