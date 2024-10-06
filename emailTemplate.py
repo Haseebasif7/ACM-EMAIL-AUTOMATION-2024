@@ -72,13 +72,11 @@ for i in range(2, sheet.max_row + 1):
                     <h1>Welcome to ACM</h1>
                 </div>
 
-                <!-- Body -->
                 <div class="email-body">
                     <h2>Hello!</h2>
                     <p>Welcome to the ACM community. We are excited to have you!</p>
                 </div>
 
-                <!-- Footer -->
                 <div class="email-footer">
                     <p>Regards,<br>ACM Team</p>
                 </div>
