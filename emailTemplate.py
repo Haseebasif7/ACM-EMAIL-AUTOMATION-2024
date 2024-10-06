@@ -68,7 +68,7 @@ for i in range(2, sheet.max_row + 1):
         <body>
             <div class="email-container">
                 <div class="email-header">
-                    <img src="{image_url}" style="width: 50%;" alt="ACM Logo">
+                    <img src="{image_url}" style="width: 50%; border-radius:10px;" alt="ACM Logo">
                     <h1>Welcome to ACM</h1>
                 </div>
 
@@ -82,7 +82,7 @@ for i in range(2, sheet.max_row + 1):
                 </div>
             </div>
         </body>
-</html>
+        </html>
         """
 
         msg.attach(MIMEText(html, 'html'))
