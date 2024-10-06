@@ -9,7 +9,7 @@ gmail_password = ''
 workbook = openpyxl.load_workbook('C:/Users/CoreCom/Downloads/IDs.xlsx')
 sheet = workbook.active
 
-image_url = 'https://drive.google.com/uc?export=view&id=1XRpg-Sc-2YJLAaseX3J2yTD-2Vf5GAaA'
+image_url = 'C:\Users\Asif\Desktop\acm2\ACM-EMAIL-AUTOMATION-2024\acmLogo.jpeg'
 
 for i in range(2, sheet.max_row + 1): 
     recipient_email = sheet.cell(row=i, column=1).value  
