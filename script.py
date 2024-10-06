@@ -8,8 +8,18 @@ from email.mime.image import MIMEImage
 from email.mime.application import MIMEApplication
 from dotenv import load_dotenv
 from letterFunction import getLetterWithAttributes
+from datetime import datetime
+import logging
 
+# Load environment variables
 load_dotenv()
+
+# Set up logging
+logging.basicConfig(
+    filename='email_automation.log',
+    level=logging.DEBUG,  # Set to DEBUG to capture all messages
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 def convert_html_to_pdf(html_content, name):
     output_filename = f"{name}_welcome_letter.pdf"
@@ -33,9 +43,9 @@ def convert_html_to_pdf(html_content, name):
                 'page-width': '8.23in'
             }
         )
-        print(f"Successfully created PDF: {output_filename}")
+        logging.info(f"Successfully created PDF: {output_filename}")
     except Exception as e:
-        print(f"Failed to generate PDF for {name}. Error: {e}")
+        logging.error(f"Failed to generate PDF for {name}. Error: {e}")
         output_filename = None
     return output_filename
 
@@ -66,24 +76,30 @@ def send_email(recipient_email, subject, html_content, pdf_file_path, image_path
         msg.attach(img_attachment)
 
     # Send the email
-    with smtplib.SMTP('smtp.gmail.com', 587) as server:
-        server.starttls()  # Upgrade the connection to secure
-        server.login(sender_email, sender_password)
-        server.send_message(msg)
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+            server.starttls()  # Upgrade the connection to secure
+            server.login(sender_email, sender_password)
+            server.send_message(msg)
+            logging.info(f"Email sent to {recipient_email}.")
+    except Exception as e:
+        logging.error(f"Failed to send email to {recipient_email}. Error: {e}")
 
 def process_csv_and_send_emails(csv_file):
     # Attempt to read the CSV file
     try:
         data = pd.read_csv(csv_file)
     except FileNotFoundError:
-        print(f"Error: The file at {csv_file} was not found.")
+        logging.error(f"Error: The file at {csv_file} was not found.")
         return
     except pd.errors.EmptyDataError:
-        print("Error: The file is empty.")
+        logging.error("Error: The file is empty.")
         return
     except pd.errors.ParserError:
-        print("Error: The file could not be parsed.")
+        logging.error("Error: The file could not be parsed.")
         return
+
+    failed_emails = []
 
     for index, row in data.iterrows():
         name = row['FULLNAME']
@@ -160,21 +176,28 @@ def process_csv_and_send_emails(csv_file):
 </html>
         """
 
-        # Create a PDF version of the HTML content without the logo
         pdf_html_content = html_content.replace(
             '<img src="cid:acmLogo" style="width: 50%; border-radius:10px;" alt="ACM Logo">',
             ''
         )
 
-        # Create PDF from HTML
         pdf_file_path = convert_html_to_pdf(pdf_html_content, name)
 
-        # Image path for inline display
         image_url = 'C:/Users/Asif/Desktop/acm2/ACM-EMAIL-AUTOMATION-2024/acmLogo.jpeg'
 
         try:
             send_email(recipient_email, f"Welcome to the {department} Team, {name}!", final_html, pdf_file_path, image_url)
-            print(f"Email sent to {name} at {recipient_email}.")
+            # Record the timestamp
+            data.at[index, 'EmailSentTimestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         except Exception as e:
-            print(f"Failed to send email to {name}. Error: {e}")
+            failed_emails.append(row)
+
+    data.to_csv(csv_file, index=False)
+    
+    if failed_emails:
+        failed_df = pd.DataFrame(failed_emails)
+        failed_csv_file = 'failed_email_recipients.csv'
+        failed_df.to_csv(failed_csv_file, index=False)
+        logging.info(f"Failed email recipients saved to {failed_csv_file}.")
+
 
