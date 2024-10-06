@@ -1,14 +1,15 @@
-Email Automation System
+# Email Automation System
 
 - Email Sending // DONE
 	- Ability to add attachments // DONE
 	- Ability to add html embedded emails // DONE
 
 - Email Design
-	- The design for html emails
+	- The design for the html emails
 
 - Logging
 	- To have csv files of sent and unsent recipients generated automatically.
 	
 - Letter Generation
-	- Generate Custom Letters (Initial Design Ready, waiting on official designs for updates)
+	- Letter Design in Html // Initial Design done, changes to be made once official design recieved.
+	- Html to Pdf conversion (pdfkit)
