@@ -152,17 +152,19 @@ def process_csv_and_send_emails(csv_file):
                     <h1>Welcome to ACM</h1>
                 </div>
 
+                <!-- Body -->
                 <div class="email-body">
                     <h2>Hello!</h2>
                     <p>Welcome to the ACM community. We are excited to have you!</p>
                 </div>
 
+                <!-- Footer -->
                 <div class="email-footer">
                     <p>Regards,<br>ACM Team</p>
                 </div>
             </div>
         </body>
-        </html>
+</html>
         """
 
         try:
