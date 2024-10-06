@@ -37,7 +37,7 @@ def getLetterWithAttributes(fullName, position, teamName):
       width: 80%;
       font-size: 2.8vw; /* Adjusted for smaller screens */
       white-space: wrap;
-      box-shadow: 6px 6px 5px rgba(160, 155, 155, 0.9);
+
     }}
     .container{{
       white-space: wrap;
@@ -71,3 +71,4 @@ def getLetterWithAttributes(fullName, position, teamName):
 </body>
 </html>
     """
+
