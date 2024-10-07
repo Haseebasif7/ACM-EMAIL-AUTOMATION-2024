@@ -24,36 +24,19 @@ def getLetterWithAttributes(fullName, position, teamName):
   p{{
     width: 78%;
     position: absolute;
-    top: 30%; /* Adjusted this value to move text higher by two lines */
-    left: 10%;
+    top: 220px; /*Adjusted this value to move text higher by two lines*/
+    left: 62px;
     padding: 10px;
-    background-color: #ffffff80;
+    background-color: #ffffff00;
     font-family: Calibri, sans-serif;
-    font-size: 1.4em; /* Slightly reduced font size */
+    font-size: 0.65em; /* Slightly reduced font size */
     margin-top: 20px; /* Reduced space above the text */
   }}
-  @media screen and (max-width:600px) {{
-    p{{
-      width: 80%;
-      font-size: 2.8vw; /* Adjusted for smaller screens */
-      white-space: wrap;
-
-    }}
-    .container{{
-      white-space: wrap;
-    }}
-  }}
-  @media screen and (min-width:600px) {{
-    p{{
-      width: 80%;
-      font-size: 2.3vw; /* Adjusted for larger screens */
-      white-space: wrap;
-    }}
-  }}
+  
 </style>
 <body>
   <div class="container">
-    <img src="C:/Users/Asif/Desktop/acm/pic.png" alt="">
+    <img src="assets/letter_template.jpg" alt="">
     <p>
       Dear {fullName}, <br><br>
 
@@ -70,5 +53,5 @@ def getLetterWithAttributes(fullName, position, teamName):
   </div>
 </body>
 </html>
-    """
+"""
 
