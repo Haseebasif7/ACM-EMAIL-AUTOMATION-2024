@@ -66,13 +66,18 @@ def send_email(recipient_email, subject, html_content, pdf_file_path, image_path
     if pdf_file_path:
         with open(pdf_file_path, 'rb') as pdf_file:
             pdf_attachment = MIMEApplication(pdf_file.read(), _subtype='pdf')
-            pdf_attachment.add_header('Content-Disposition', 'attachment', filename=os.path.basename(pdf_file_path))
+            pdf_attachment.add_header(
+                'Content-Disposition',
+                f'attachment; filename="{os.path.basename(pdf_file_path)}"'
+            )
+            pdf_attachment.add_header('Content-ID', '<pdfAttachment>')  # Ensure no "noname" issue
             msg.attach(pdf_attachment)
 
     # Attach the image
     with open(image_path, 'rb') as img_file:
         img_attachment = MIMEImage(img_file.read())
-        img_attachment.add_header('Content-ID', '<acmLogo>')  # This ID is used in the HTML
+        img_attachment.add_header('Content-ID', '<acmLogo>')  # This ID is used in the HTML for embedding the image
+        img_attachment.add_header('Content-Disposition', 'inline; filename="acmLogo.jpeg"')  # Make image inline
         msg.attach(img_attachment)
 
     # Send the email
@@ -84,6 +89,7 @@ def send_email(recipient_email, subject, html_content, pdf_file_path, image_path
             logging.info(f"Email sent to {recipient_email}.")
     except Exception as e:
         logging.error(f"Failed to send email to {recipient_email}. Error: {e}")
+
 
 def process_csv_and_send_emails(csv_file):
     # Attempt to read the CSV file
@@ -191,6 +197,7 @@ def process_csv_and_send_emails(csv_file):
             data.at[index, 'EmailSentTimestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         except Exception as e:
             failed_emails.append(row)
+            
 
     data.to_csv(csv_file, index=False)
     
@@ -199,5 +206,6 @@ def process_csv_and_send_emails(csv_file):
         failed_csv_file = 'failed_email_recipients.csv'
         failed_df.to_csv(failed_csv_file, index=False)
         logging.info(f"Failed email recipients saved to {failed_csv_file}.")
+        
 
 
