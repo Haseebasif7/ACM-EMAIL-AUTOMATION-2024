@@ -101,7 +101,7 @@ def process_csv_and_send_emails(csv_file):
         image_url = 'C:/Users/Asif/Desktop/acm2/ACM-EMAIL-AUTOMATION-2024/acmLogo.jpeg'
 
         # Construct the final HTML email with the header and body
-        final_html = f"""
+        final_html =f"""
         <!DOCTYPE html>
         <html>
         <head>
@@ -149,22 +149,24 @@ def process_csv_and_send_emails(csv_file):
             <div class="email-container">
                 <div class="email-header">
                     <img src="{image_url}" style="width: 50%; border-radius:10px;" alt="ACM Logo">
-                    <h1>Welcome to ACM</h1>
+                    <h1>Welcome To NUCES KHI ACM'24-25</h1>
                 </div>
 
                 <!-- Body -->
                 <div class="email-body">
-                    <h2>Hello!</h2>
-                    <p>Welcome to the ACM community. We are excited to have you!</p>
+                    <p>Dear Shaheer Luqman,</p>
+                    <p>
+                        On behalf of the entire executive committee of ACM’24-25, I would like to extend my sincerest congratulations for being selected into our extended executive committee. We are thrilled to have you on board and look forward to your continued contributions in this esteemed position.
+                    </p>
+                    
                 </div>
 
-                <!-- Footer -->
                 <div class="email-footer">
-                    <p>Regards,<br>ACM Team</p>
+                    <p>Best Regards,<br>Hassaan Gatta,<br>President,<br>NUCES KHI ACM Student Chapter</p>
                 </div>
             </div>
         </body>
-</html>
+        </html>
         """
 
         try:

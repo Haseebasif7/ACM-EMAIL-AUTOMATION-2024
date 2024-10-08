@@ -21,7 +21,7 @@ def getLetterWithAttributes(fullName,position,teamName):
   }}
   .container img{{
     width: 100%;
-    z-index: 1;
+    z-index: -1;
     /* object-fit: cover; */
   }}
   p{{
