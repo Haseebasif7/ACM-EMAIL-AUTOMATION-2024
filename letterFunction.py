@@ -1,76 +1,63 @@
-def getLetterWithAttributes(fullName,position,teamName):
+def getLetterWithAttributes(fullName, position, teamName):
   return f"""
     <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Email Automation</title>
-</head>
-<style>
-  *{{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }}
-  .container{{
-    position: relative;
-    height: auto;
-
-  }}
-  .container img{{
-    width: 100%;
-    z-index: -1;
-    /* object-fit: cover; */
-  }}
-  p{{
-    width: 78%;
-    position: absolute;
-    top: 30%;
-    left: 10%;
-    padding: 10px;
-    background-color: #ffffff80;
-    box-shadow: 6px 6px 5px rgba(148, 138, 138, 0.9);
-    font-family: Calibri, sans-serif;
-  }}
-  @media screen and (max-width:600px) {{
-    p{{
-      width: 80%;
-      font-size: 2vw;
-      white-space: wrap;
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Automation</title>
+  </head>
+  <style>
+    *{{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }}
     .container{{
-      white-space: wrap;
+      position: relative;
+      height: auto;
     }}
-  }}
-  @media screen and (min-width:600px) {{
+    .container img{{
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      /* object-fit: cover; */
+    }}
     p{{
-      width: 80%;
+      width: 82%;
+      position: absolute;
+      top: 28%;
+      left: 9%;
+      padding: 10px;
+      font-family: Calibri, sans-serif;
       font-size: 2vw;
-      white-space: wrap;
     }}
-  }}
+    @media screen and (min-width:400px){{
+      p{{
+        top:31%;
+        left:11%;
+      }}
+    }}
 
-</style>
-<body>
-  <div class="container">
-    <img src="/images/Extended Member Inductions - Letter template-1.png" alt="">
-    <!-- <div class="text-container"> -->
+  </style>
+  <body>
+    <div class="container">
+      <img src="/images/presi-1.png" alt="Letter">
       <p>
         Dear {fullName}, <br><br>
-  
-        Welcome to the Extended Executive Committee of the ACM NUCES Karachi. We are excited to have you on board and look forward to the contributions you will make as {position} Team {teamName}.<br><br>
-  
-        It is worth acknowledging that the Extended ExCom of the ACM plays a crucial role in shaping the future of our event. Your involvement will be essential in crafting strategies, evaluating projects of your team members, and ensuring that our objectives align with the needs of our community. We believe in fostering a positive and collaborative work environment where everyone can grow and succeed together.<br><br>
-  
-        Our Extended ExCom is committed to creating a supportive and inclusive environment where everyone's voices are heard and respected. We are confident that your addition to our team will further enhance our cohesion and effectiveness.<br><br>
-  
-        Once again, welcome to the team! We are thrilled to have you with us and can't wait to see what we will achieve together.<br><br>
-  
-        Best Regards,<br>
+
+        <b>Congratulations</b> on your selection to the <b>Extended Executive Committee</b> for the 2024-25 term of the <b>NUCES KHI ACM Student Chapter!</b> We are excited to welcome you as the <b>{position}</b> of <b>Team {teamName}</b> and look forward to your leadership in driving the team’s success.<br><br>
+
+        Your role will be pivotal in fulfilling the operational responsibilities expected from your team, and we believe your strategic insights and leadership will contribute greatly to our goals. With your expertise, we are confident that you will guide your team to deliver their best, ensuring that our objectives are met effectively.<br><br>
+
+        We are committed to fostering a collaborative and supportive environment, and your leadership will play a crucial role in helping us grow as a cohesive unit.<br><br>
+
+        Once again, congratulations and welcome to the team! We’re excited to see the impact we will make together.
+        <br><br>
+
+        Best Regards
       </p>
-    <!-- </div> -->
-  </div>
-</body>
-</html>
+    </div>
+  </body>
+  </html>
   """
