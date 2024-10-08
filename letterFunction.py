@@ -1,4 +1,3 @@
-
 def getLetterWithAttributes(fullName,position,teamName):
   return f"""
     <!DOCTYPE html>
@@ -39,7 +38,6 @@ def getLetterWithAttributes(fullName,position,teamName):
       width: 80%;
       font-size: 2vw;
       white-space: wrap;
-      box-shadow: 6px 6px 5px rgba(160, 155, 155, 0.9);
     }}
     .container{{
       white-space: wrap;
@@ -56,7 +54,7 @@ def getLetterWithAttributes(fullName,position,teamName):
 </style>
 <body>
   <div class="container">
-   <img src="C:/Users/Asif/Desktop/acm/pic.png" alt="">
+    <img src="/images/Extended Member Inductions - Letter template-1.png" alt="">
     <!-- <div class="text-container"> -->
       <p>
         Dear {fullName}, <br><br>
